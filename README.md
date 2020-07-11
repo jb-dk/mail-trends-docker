@@ -46,3 +46,24 @@ or reading a Mail.app Mailbox
 ```
 ./main.py --mailboxpackage=~/Library/Mail/V3
 ```
+
+# Setup with containers
+Created a (Dockerfile)[Dockerfile].
+
+## Build image
+```bash
+docker build -t mail-trends .
+```
+
+## Run image
+
+```bash
+#ME=me@mydomain.com
+#ME2=me2@myotherdomain.com,$ME
+. .env
+#docker run -it mail-trends bash
+#docker run -it -v $(pwd)/out:/out mail-trends bash
+
+docker run -it -v $(pwd)/out:/out mail-trends python main.py --server=imap.gmail.com --use_ssl --username=$ME --me=$ME2 --skip_labels --server_mailbox="[Gmail]/All Mail"
+
+```

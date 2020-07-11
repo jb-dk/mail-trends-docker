@@ -1,1 +1,4 @@
 *.pyc
+.secrets
+out/index.html
+.env
